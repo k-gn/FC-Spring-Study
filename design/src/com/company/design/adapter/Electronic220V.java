@@ -1,6 +1,6 @@
 package com.company.design.adapter;
 
-public interface Electronic110V {
+public interface Electronic220V {
 
-    void powerOn();
+    void connect();
 }

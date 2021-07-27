@@ -1,2 +1,6 @@
-package com.company.design.adapter;public class Electronic110V {
+package com.company.design.adapter;
+
+public interface Electronic110V {
+
+    void powerOn();
 }
