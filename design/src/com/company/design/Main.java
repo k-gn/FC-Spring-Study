@@ -4,6 +4,7 @@ import com.company.design.adapter.Electronic110V;
 import com.company.design.decorator.A3;
 import com.company.design.decorator.Audi;
 import com.company.design.decorator.ICar;
+import com.company.design.strategy.*;
 
 public class Main {
 
@@ -77,7 +78,7 @@ public class Main {
         button.click("메시지 전달3");
          */
 
-        /* # facade
+        /* # facade (각각의 객체에 의존하는게 아닌 정면만 바라볼 수 있는 facade 객체를 사용)
         FTP ftpClient = new FTP("www.foo.co.kr", 22, "/home/etc");
         ftpClient.connect();
         ftpClient.moveDirectory();
@@ -100,6 +101,24 @@ public class Main {
         sftpClient.read();
         sftpClient.disConnect();
          */
+
+        Encoder encoder = new Encoder();
+
+        EncodingStrategy base64 = new Base64Strategy();
+        EncodingStrategy normal = new NormalStrategy();
+
+        String message = "Hello Java";
+
+        encoder.setEncodingStrategy(base64);
+        String base64Result = encoder.getMessage(message);
+        encoder.setEncodingStrategy(normal);
+        String normalResult = encoder.getMessage(message);
+
+        System.out.println(base64Result);
+        System.out.println(normalResult);
+
+        encoder.setEncodingStrategy(new AppendStrategy());
+        System.out.println(encoder.getMessage(message));
     }
 
     // 콘센트
