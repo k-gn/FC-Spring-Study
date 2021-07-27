@@ -56,12 +56,50 @@ public class Main {
         System.out.println(end.get());
         */
 
-
+        /* # decorator
         ICar audi = new Audi(1000);
         audi.showPrice();
 
         ICar a3 = new A3(audi, "audi a3");
         a3.showPrice();
+         */
+
+        /* # observer
+        Button button = new Button("버튼");
+        button.addListener(new IButtonListener() {
+            @Override
+            public void clickEvent(String event) {
+                System.out.println(event);
+            }
+        });
+        button.click("메시지 전달1");
+        button.click("메시지 전달2");
+        button.click("메시지 전달3");
+         */
+
+        /* # facade
+        FTP ftpClient = new FTP("www.foo.co.kr", 22, "/home/etc");
+        ftpClient.connect();
+        ftpClient.moveDirectory();
+
+        Writer writer = new Writer("text.tmp");
+        writer.fileConnect();
+        writer.write();
+
+        Reader reader = new Reader("text.tmp");
+        reader.fileConnect();
+        reader.fileRead();
+
+        ftpClient.disConnect();
+        writer.fileDisConnect();
+        reader.fileDisConnect();
+
+        SftpClient sftpClient = new SftpClient("www.foo.co.kr", 22, "/home/etc", "text.tmp");
+        sftpClient.connect();
+        sftpClient.write();
+        sftpClient.read();
+        sftpClient.disConnect();
+         */
     }
 
     // 콘센트
