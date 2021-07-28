@@ -102,6 +102,7 @@ public class Main {
         sftpClient.disConnect();
          */
 
+        // strategy pattern
         Encoder encoder = new Encoder();
 
         EncodingStrategy base64 = new Base64Strategy();
