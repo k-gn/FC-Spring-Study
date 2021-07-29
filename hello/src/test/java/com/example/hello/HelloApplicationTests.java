@@ -13,7 +13,7 @@ class HelloApplicationTests {
     void contextLoads() throws JsonProcessingException {
         System.out.println("hello test");
 
-        // # ObjectMapper
+        // # ObjectMapper 직접 사용해보기
         // Text JSON -> Object ( controller req json -> object )
         // Object -> Text JSON ( response object -> json )
 

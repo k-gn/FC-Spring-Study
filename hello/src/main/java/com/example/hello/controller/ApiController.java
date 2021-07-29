@@ -19,8 +19,8 @@ public class ApiController {
         return account;
     }
 
-    // JSON
-    // req -> object mapper -> object -> method -> object -> object mapper -> json -> resp
+    // JSON 자동 처리
+    // req(json) -> object mapper -> object -> method -> object -> object mapper -> json -> resp
     @PostMapping("/json")
     public User json(@RequestBody User user) {
         return user;
