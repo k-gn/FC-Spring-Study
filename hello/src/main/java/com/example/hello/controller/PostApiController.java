@@ -16,7 +16,7 @@ public class PostApiController {
     // @RequestBody : Post 방식에서 Json으로 받은 HTTP Body 데이터를 받을 수(parsing) 있다.
     @PostMapping("/post")
     public void post(@RequestBody Map<String, String> requestData) {
-        requestData.forEach((key, value) -> {
+        requestData.forEach((key, value) -> { // map을 람다로 더 간단하게 추출 가능
             System.out.println("key : " + key);
             System.out.println("value : " + value);
         });

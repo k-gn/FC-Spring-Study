@@ -59,6 +59,7 @@ public class GetApiController {
 
     // 3. 커맨드 객체로 받기 (추천!)
     // @RequestParam 이 없어도 Spring 이 알아서 매핑해준다.
+    // 들어오는 쿼리파라미터 이름을 클래스의 변수명과 매핑 (이 때 setter 동작)
     @GetMapping("/query-param04")
     public String queryParam04(UserRequest userRequest) {
         return userRequest.toString();
