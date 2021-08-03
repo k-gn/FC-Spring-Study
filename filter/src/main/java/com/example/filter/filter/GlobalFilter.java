@@ -17,7 +17,7 @@ import java.io.IOException;
 // 요청/응답의 정보를 변경하거나 순수한 정보를 확인할 수 있다.
 // request, response의 Logging 용도나 인증관련 Logic 등을 처리할 수 있다.
 // 선/후 처리 함으로써 business logic과 분리시킨다.
-// aop 같은건 객체로 매핑되서 들어오지만 filter는 가장 앞단에서 스프링에 의해 데이터가 변환되기 전의 순수한 request 를 다룬다.
+// aop 같은건 객체로 매핑되서 들어오지만 filter는 가장 앞단에서 스프링에 의해 데이터가 변환되기 전의 순수한 request 를 다룬다. (spring context에 등록x)
 // 인증, 보안 처리나 (세션검증 등) 로깅 처리 등을 할 수 있다.
 @Slf4j
 @WebFilter("/apif/user/*") // 해당 요청url 에서만 필터 동작
