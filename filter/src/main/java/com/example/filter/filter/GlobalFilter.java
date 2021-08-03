@@ -1,6 +1,7 @@
 package com.example.filter.filter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 
@@ -20,11 +21,13 @@ import java.io.IOException;
 // 인증, 보안 처리나 (세션검증 등) 로깅 처리 등을 할 수 있다.
 @Slf4j
 @WebFilter("/apif/user/*") // 해당 요청url 에서만 필터 동작
+//@Component // 빈 등록해서 필터 등록
 public class GlobalFilter implements Filter { // Filter 구현
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
+        System.out.println("Filter !!!!!");
         // 전처리
         // Reader로 read를 한번 하게 되면 안에 내용을 다 읽게 되고 그 이후엔 더 이상 읽을 수 없게 된다. (커서가 맨 끝에 가있음)
         // 누구든 read를 한번 하게 되면 내용을 더 이상 읽을 수 없다.
@@ -33,6 +36,11 @@ public class GlobalFilter implements Filter { // Filter 구현
         // 단. 후처리(chain.doFilter 이 후) 때 내용을 읽을 수 있음 (전처리에선 길이만 읽어온다.)
         ContentCachingRequestWrapper httpServletRequest = new ContentCachingRequestWrapper((HttpServletRequest)request);
         ContentCachingResponseWrapper httpServletResponse = new ContentCachingResponseWrapper((HttpServletResponse)response);
+
+        String s = httpServletRequest.getRequestURI();
+        String s2 = new String(httpServletRequest.getContentAsByteArray());
+        log.info("request url : {}, requestBody : {}", s, s2);
+        log.info("===================================================");
 
         // 주의할 점은 전처리때 사실 request 내용을 담은게 아닌 길이만 지정한다.
         // doFilter를 통해 내부 스프링으로 들어가야 request content 가 ByteArray에 담긴다.
