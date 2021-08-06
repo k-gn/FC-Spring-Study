@@ -1,0 +1,9 @@
+# api 사용을 위해 환경에 따라 값을 바꿀 수 있도록 yml 파일에 설정
+naver:
+  url:
+    search:
+      local: https://openapi.naver.com/v1/search/local.json
+      image: https://openapi.naver.com/v1/search/image
+  client:
+    id: NYaopfXA8vmQfJ_bdBK3
+    secret: T6Eh7QpHuK
