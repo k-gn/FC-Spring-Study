@@ -1,0 +1,11 @@
+
+spring:
+  h2:
+    console:
+      enabled: true # H2 Console 사용, h2 db 를 인 메모리(메모리에 데이터를 저장) db 로 로딩
+
+  jpa:
+    show-sql: true # db에 날리는 sql을 보여준다.
+    properties:
+      hibernate:
+        format_sql: true # 예쁘게 보기 위한 포매팅 설정
