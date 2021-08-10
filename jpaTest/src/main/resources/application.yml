@@ -1,0 +1,16 @@
+spring:
+  datasource: # 직접 설정한 Dialect 사용 (default 는 h2)
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/fcam?serverTimezone=Asia/Seoul
+    username: fcam
+    password: 1234
+
+  jpa:
+    show-sql: true # db에 날리는 sql을 보여준다.
+    properties:
+      hibernate:
+        format_sql: true # 예쁘게 보기 위한 포매팅 설정
+    hibernate:
+      ddl-auto: create # 초기화 전략, generate-ddl 보다 우선적, schema.sql 을 쓸 경우 무시된다.
+
+
