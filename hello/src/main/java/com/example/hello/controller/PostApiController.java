@@ -1,11 +1,10 @@
 package com.example.hello.controller;
 
 import com.example.hello.dto.PostRequestDto;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @RestController
@@ -15,11 +14,22 @@ public class PostApiController {
     // Post 방식 (등록)
     // @RequestBody : Post 방식에서 Json으로 받은 HTTP Body 데이터를 받을 수(parsing) 있다.
     @PostMapping("/post")
-    public void post(@RequestBody Map<String, String> requestData) {
+    public void post(@RequestBody MultiValueMap<String, String> requestData, HttpServletRequest request) {
+        System.out.println(request.getHeader("Content-Type"));;
+        System.out.println(requestData);
         requestData.forEach((key, value) -> { // map을 람다로 더 간단하게 추출 가능
             System.out.println("key : " + key);
             System.out.println("value : " + value);
         });
+    }
+
+    // MultiValueMap은 Spring에서 제공하는 Data Collection으로 List형태의 값들을 Value로 Binding 할 수 있는 특징을 지닌다.
+    // body 로 올 경우 application/x-www-form-urlencoded 로 정의된 폼 데이터를 주고받는다.
+    // 같은 Key를 가진 파라미터 값이 여러개일 경우를 대비할 수 있다.
+    @GetMapping("/post/get")
+    public void get(@RequestParam MultiValueMap<String, String> requestData, HttpServletRequest request) {
+        System.out.println(requestData);
+        System.out.println(request.getHeader("Content-Type"));
     }
 
     @PostMapping("/post02")

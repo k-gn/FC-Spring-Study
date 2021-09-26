@@ -3,6 +3,7 @@ package com.example.hello.controller;
 import com.example.hello.dto.UserRequest;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -29,9 +30,9 @@ public class GetApiController {
     }
 
     // Query-Parameter (?key=value&key=value...)
-    // 1. @RequestParam 를 통해 컬렉션 객체 등 안에 쿼리 파라미터를 받을 수 있다.
+    // 1. @RequestParam 를 통해 컬렉션 객체 등에 쿼리 파라미터를 받을 수 있다.
     @GetMapping(path = "/query-param")
-    public String queryParam(@RequestParam Map<String, String> queryParam) {
+    public String queryParam(@RequestParam Map<String, Object> queryParam) {
         StringBuilder sb = new StringBuilder();
         queryParam.entrySet().forEach(entry -> {
             System.out.println(entry.getKey());
@@ -40,6 +41,15 @@ public class GetApiController {
 
             sb.append(entry.getKey() + " = " + entry.getValue() + "\n");
         });
+        return sb.toString();
+    }
+
+    @GetMapping(path = "/query-list")
+    public String queryList(@RequestParam List<String> names) { // list 로 받을 때 변수명이 같아야함
+        StringBuilder sb = new StringBuilder();
+        for(String s : names) {
+            sb.append(s + " ");
+        }
         return sb.toString();
     }
 
